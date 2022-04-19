@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
     # if params[:transaction] && params[:transaction][":country"]
       # @transactions = Transaction.all.search(params[:search])
       # @transactions = Transaction.all.search(params[:transaction][":country"][","])
-    if params["q"]
+    if params["q"] && params["q"] != "All"
       @transactions = Transaction.where(country: params["q"])
       @total_sum = @transactions.sum("unit_price * quantity")
       @uniq_orders = @transactions.distinct.pluck(:order_id).count
