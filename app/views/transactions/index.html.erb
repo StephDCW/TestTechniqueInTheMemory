@@ -35,5 +35,5 @@
 
 <h3 class="chart-title">Revenue per month</h3>
 <div class="chart">
-  <%= column_chart @transactions.group_by_month(:date, format: "%b %Y").sum("unit_price * quantity"), width: "1000px", height: "400px",xtitle: "Month", ytitle: "Revenue" %>
+  <%= column_chart @transactions.group_by_month(:date, format: "%b %Y").sum("unit_price * quantity"), width: "1400px", height: "400px",xtitle: "Month", ytitle: "Revenue" %>
 </div>
