@@ -1,4 +1,4 @@
-<div class="container">
+<div class="search-bar">
   <h3>Search by country:</h3>
   <%= form_tag(transactions_path, method: "get") do %>
     <select name=q class="form-control">
@@ -8,23 +8,32 @@
       </option>
     <% end %>
     </select>
-    <%= submit_tag "Search" %>
+    <%= submit_tag "Search", class:"submit-search"%>
   <% end %>
 </div>
+
 <% if params["q"] %>
-  <h3>Results for <%= params["q"] %></h3>
+  <h3 class="results">Results for <%= params["q"] %></h3>
 <% else %>
-  <h3>Results for all countries</h3>
+  <h3 class="results">Results for all countries</h3>
 <% end %>
 
+<div class="info-list">
+  <div class="info-box">
+    <h6>Total Revenue</h6>
+    <%= @total_sum %>
+  </div>
+  <div class="info-box">
+    <h6>Average Revenue per Order</h6>
+    <%= @average_per_order.truncate(2) %>
+  </div>
+  <div class="info-box">
+    <h6>Unique Customers</h6>
+    <%= @uniq_customers %>
+  </div>
+</div>
 
-<%= @total_sum %>
-<br>
-<%= @average_per_order %>
-<br>
-<%= @uniq_customers %>
-<br>
-<%= @uniq_orders %>
-
-
-<%= column_chart @transactions.group_by_month(:date, format: "%b %Y").sum("unit_price * quantity"), width: "1000px", height: "500px" %>
+<h3 class="chart-title">Revenue per month</h3>
+<div class="chart">
+  <%= column_chart @transactions.group_by_month(:date, format: "%b %Y").sum("unit_price * quantity"), width: "1000px", height: "400px",xtitle: "Month", ytitle: "Revenue" %>
+</div>

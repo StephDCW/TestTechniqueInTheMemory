@@ -1,0 +1,32 @@
+.results {
+  margin: 22px;
+}
+
+.info-list {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 22px;
+}
+
+.info-box {
+  width: 230px;
+  background-color: #dfe6f4;;
+  border: 1px solid #0C50DA;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+h6 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #0C50DA;
+  background-color: white;
+}
+
+.chart-title {
+  margin: 22px;
+}
+
+.chart {
+  margin: 22px;
+}
