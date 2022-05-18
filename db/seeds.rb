@@ -25,7 +25,7 @@ puts "All Destroyed"
 # end
 # puts "Customers Created"
 
-CSV.foreach(Rails.root.join('lib/memory-tech-challenge-data.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('lib/autre-memory-tech-challenge-data.csv'), headers: true) do |row|
   Customer.create({
     customer_ref: row[2],
   })

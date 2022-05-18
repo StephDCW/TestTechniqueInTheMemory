@@ -3,7 +3,7 @@
   <%= form_tag(transactions_path, method: "get") do %>
     <select name=q class="form-control">
     <option value="All">All countries</option>
-    <% @transactions.distinct.pluck(:country).each do |country| %>
+    <% Transaction.all_countries.each do |country| %>
       <option value="<%= country %>"><%= country %>
       </option>
     <% end %>
@@ -21,15 +21,15 @@
 <div class="info-list">
   <div class="info-box">
     <h6>Total Revenue</h6>
-    <%= @total_sum %>
+    <%= @transactions.total_sum %>
   </div>
   <div class="info-box">
     <h6>Average Revenue per Order</h6>
-    <%= @average_per_order.truncate(2) %>
+    <%= @transactions.average_per_order.truncate(2) %>
   </div>
   <div class="info-box">
     <h6>Unique Customers</h6>
-    <%= @uniq_customers %>
+    <%= @transactions.uniq_customers %>
   </div>
 </div>
 
